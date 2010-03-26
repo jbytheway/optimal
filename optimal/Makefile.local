@@ -1,0 +1,3 @@
+SUBDIRS = test
+BIN = liboptimal.la
+

@@ -4,5 +4,6 @@
 .makefrags
 /config.mk
 /user.mk
-/liboptimal.la
+/optimal/liboptimal.la
 /*/Makefile
+/*/*/Makefile
