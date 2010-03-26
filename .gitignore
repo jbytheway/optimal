@@ -1,1 +1,8 @@
 .*.swp
+.libs
+.obj
+.makefrags
+/config.mk
+/user.mk
+/liboptimal.la
+/*/Makefile
