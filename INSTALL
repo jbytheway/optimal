@@ -1,0 +1,13 @@
+This project uses makeshift to build.  If the makeshift directory is empty then
+you probably need to run
+
+$ git submodule init
+$ git submodule update
+
+Then it should be simply
+
+$ make
+
+Further configuration (e.g. if you want to use a different compiler) goes in
+user.mk.  See makeshift/INSTALL for details.
+
