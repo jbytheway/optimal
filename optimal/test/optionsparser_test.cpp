@@ -1,4 +1,4 @@
-#include <optimal/optionsparser.h>
+#include <optimal/optionsparser.hpp>
 #define BOOST_TEST_MODULE OptionsParser test
 #include <boost/test/unit_test.hpp>
 #include <boost/optional.hpp>
