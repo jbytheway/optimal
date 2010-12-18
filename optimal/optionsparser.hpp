@@ -192,7 +192,8 @@ class LIBOPTIMAL_API OptionsParser {
             *value = val;
           } else {
             errors.push_back(
-                errorPrefix+": couldn't interpret '"+s+"' as a value of the required type"
+                errorPrefix+
+                ": couldn't interpret '"+s+"' as an unsigned integer"
               );
           }
           return errors;
