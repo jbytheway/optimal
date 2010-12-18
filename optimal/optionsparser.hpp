@@ -164,7 +164,7 @@ class LIBOPTIMAL_API OptionsParser {
           throw std::logic_error("using setBoolean on non-boolean option");
         }
         void setBoolean(bool b) { internalSetBoolean<T>(b); }
-        
+
         template<typename U>
         std::list<std::string> internalSetString(
             const std::string& s,
