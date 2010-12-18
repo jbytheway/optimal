@@ -200,7 +200,7 @@ class LIBOPTIMAL_API OptionsParser {
         template<typename U>
         std::list<std::string> internalSetString(
             const std::string& s,
-            const std::string& /*errorPrefix*/,
+            const std::string& errorPrefix,
             typename
               boost::disable_if<
                 typename boost::mpl::or_<
@@ -214,7 +214,8 @@ class LIBOPTIMAL_API OptionsParser {
             *value = boost::lexical_cast<T>(s);
           } catch (boost::bad_lexical_cast&) {
             errors.push_back(
-                "couldn't interpret '"+s+"' as a value of the required type"
+                errorPrefix+
+                ": couldn't interpret '"+s+"' as a value of the required type"
               );
           }
           return errors;
