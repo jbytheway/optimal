@@ -1,4 +1,6 @@
 SUBDIRS = test
 BIN = liboptimal.la
 LIBS := -lboost_filesystem
+INSTALL_SUBDIR = optimal
+INSTALL_HEADERS = yes
 
