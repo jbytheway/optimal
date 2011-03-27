@@ -16,12 +16,6 @@
 #include <boost/spirit/home/qi/numeric/uint.hpp>
 
 #if defined(_MSC_VER)
-  #define __gnu_cxx std
-  /* This warning is about members of exported classes not being exported.
-   * This is mostly to do with stuff from std, but in at least one case it
-   * was very important.  In the long run we should do without disabling
-   * this warning. */
-  #pragma warning(disable: 4251)
   #ifdef LIBOPTIMAL_EXPORTS
     #define LIBOPTIMAL_API _declspec(dllexport)
   #else
