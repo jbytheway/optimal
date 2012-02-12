@@ -3,6 +3,7 @@
 
 #include <string>
 #include <list>
+#include <boost/scoped_ptr.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/logic/tribool.hpp>
@@ -96,10 +97,40 @@ class LIBOPTIMAL_API OptionsParser {
         char assignment = '=',
         char comment = '#'
       );
+    template<typename Sequence>
+    explicit OptionsParser(
+      Sequence* positional,
+      char newLine = '\n',
+      char assignment = '=',
+      char comment = '#'
+    ) :
+      positionalArgs(new PositionalArgs<Sequence>(positional))
+    {
+      init(newLine, assignment, comment);
+    }
   private:
+    void init(
+      char newLine,
+      char assignment,
+      char comment
+    );
+
     char newLine;
     char assignment;
     char comment;
+
+    struct PositionalArgsBase : boost::noncopyable {
+      virtual void add(char const*) = 0;
+    };
+
+    template<typename Sequence>
+    struct PositionalArgs : PositionalArgsBase {
+      PositionalArgs(Sequence* s) : sequence(s) {}
+      Sequence* sequence;
+      virtual void add(char const* a) { sequence->push_back(a); }
+    };
+
+    boost::scoped_ptr<PositionalArgsBase> positionalArgs;
 
     class Option : private boost::noncopyable {
       public:

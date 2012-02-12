@@ -384,3 +384,16 @@ BOOST_AUTO_TEST_CASE(int_option_test)
   checkIntegerOptions<int64_t>();
 }
 
+BOOST_AUTO_TEST_CASE(positional_argument_test)
+{
+  {
+    const char* argv[] = { "foo", "s" };
+    std::vector<std::string> positional;
+
+    OptionsParser p(&positional);
+    p.parse(lenof(argv), argv);
+    BOOST_REQUIRE_EQUAL(positional.size(), 1);
+    BOOST_CHECK_EQUAL(positional[0], "s");
+  }
+}
+
