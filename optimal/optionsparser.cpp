@@ -9,11 +9,16 @@ using namespace std;
 
 namespace optimal {
 
-OptionsParser::OptionsParser(char nl, char a, char c) :
-  newLine(nl),
-  assignment(a),
-  comment(c)
+OptionsParser::OptionsParser(char nl, char a, char c)
 {
+  init(nl, a, c);
+}
+
+void OptionsParser::init(char nl, char a, char c)
+{
+  newLine = nl;
+  assignment = a;
+  comment = c;
 }
 
 void OptionsParser::checkOptionNamesSanity(
@@ -273,7 +278,11 @@ bool OptionsParser::parse(
         }
       }
     } else {
-      errors.push_back(string("argument '")+arg+"' not an option");
+      if (positionalArgs) {
+        positionalArgs->add(arg);
+      } else {
+        errors.push_back(string("argument '")+arg+"' not an option");
+      }
     }
   }
 
