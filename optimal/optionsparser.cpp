@@ -167,7 +167,7 @@ bool OptionsParser::parse(
   for (int i = 1; i<argc; i++) {
     const char* arg = argv[i];
 
-    if (arg[0] == '-') {
+    if (arg[0] == '-' && arg[1] != '\0') {
       if (arg[1] == '-') {
         /* long option */
         if (boost::algorithm::starts_with(arg+2, "no-")) {

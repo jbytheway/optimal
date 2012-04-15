@@ -395,5 +395,14 @@ BOOST_AUTO_TEST_CASE(positional_argument_test)
     BOOST_REQUIRE_EQUAL(positional.size(), 1);
     BOOST_CHECK_EQUAL(positional[0], "s");
   }
+  {
+    const char* argv[] = { "foo", "-" };
+    std::vector<std::string> positional;
+
+    OptionsParser p(&positional);
+    p.parse(lenof(argv), argv);
+    BOOST_REQUIRE_EQUAL(positional.size(), 1);
+    BOOST_CHECK_EQUAL(positional[0], "-");
+  }
 }
 
