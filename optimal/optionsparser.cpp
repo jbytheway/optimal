@@ -163,11 +163,13 @@ bool OptionsParser::parse(
     parseStream(configFile, configFilePath.string());
   }
 
+  bool positionalArgumentsOnly = false;
+
   /* Now we process the command line */
   for (int i = 1; i<argc; i++) {
     const char* arg = argv[i];
 
-    if (arg[0] == '-' && arg[1] != '\0') {
+    if (!positionalArgumentsOnly && arg[0] == '-' && arg[1] != '\0') {
       if (arg[1] == '-') {
         /* long option */
         if (boost::algorithm::starts_with(arg+2, "no-")) {
@@ -189,8 +191,7 @@ bool OptionsParser::parse(
         } else {
           string optionName(arg+2);
           if (optionName.empty()) {
-            /** \todo this indicates non-option arguments */
-            errors.push_back("no option name after '--'");
+            positionalArgumentsOnly = true;
           } else {
             OptionContainer::iterator optionIt = options.find(optionName);
 
