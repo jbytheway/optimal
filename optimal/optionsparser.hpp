@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 #include <boost/scoped_ptr.hpp>
+#include <boost/smart_ptr/shared_ptr.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/logic/tribool.hpp>
