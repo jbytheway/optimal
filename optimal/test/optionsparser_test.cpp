@@ -169,8 +169,8 @@ BOOST_AUTO_TEST_CASE(bool_option_test)
     BOOST_CHECK_EQUAL(bool2, true);
     BOOST_CHECK_EQUAL(bool3, false);
     BOOST_CHECK(boost::logic::indeterminate(tribool4));
-    BOOST_CHECK(tribool5);
-    BOOST_CHECK(!tribool6);
+    BOOST_CHECK(static_cast<bool>(tribool5));
+    BOOST_CHECK(static_cast<bool>(!tribool6));
   }
 }
 
